@@ -1,9 +1,13 @@
 import json
-import transformers
-from transformers import BertModel
-from torch import nn
+
+import torch
 import torch.nn.functional as F
 from transformers import BertTokenizer
+
+from .sunbert_classifer import SunbertClassifier
+
+with open("config.json") as json_file:
+    confog = json.load(json_file)
 
 
 class Model:
