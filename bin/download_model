@@ -1,6 +1,7 @@
-#!usr/bin/env python
-
+#!/usr/bin/env python
 import gdown
 
-gdown.download("https://drive.google.com/",
-               "assets/model_state_dict.bin") # Insert link to google drive link with the model file
+gdown.download(
+    "https://drive.google.com/uc?id=1kvQB8KAmCEd0b_ovXXzokBh-2XZJrtph",
+    "assets/model_state_dict.bin",
+)
