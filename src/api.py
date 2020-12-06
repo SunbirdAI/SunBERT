@@ -17,7 +17,7 @@ class Classification_Response(BaseModel):
 
 @app.post("/predict", response_model=Classification_Response)
 def predict(request: Classification_Request, model: Model = Depends(get_model)):
-    sentiment, confidence, probabilities = model.predict(request.text)
+    classification, confidence, probabilities = model.predict(request.text)
 
     return Classification_Response(
         classification = classification, confidence = confidence, probabilities=probabilities

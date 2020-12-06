@@ -7,17 +7,17 @@ from transformers import BertTokenizer
 from .sunbert_classifer import SunbertClassifier
 
 with open("config.json") as json_file:
-    confog = json.load(json_file)
+    config = json.load(json_file)
 
 
 class Model:
     def __init__(self):
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.tokenizer = BertTokenizer.from_pretrained(config["BERT_MODEL"])
-        classifier = SunBert(len(config["CLASS_NAMES"]))
+        classifier = SunbertClassifier(len(config["CLASS_NAMES"]))
 
         classifier.load_state_dict(
-                torch.load(config["PRETRAINED_MODEL"], map_location=self.device)
+                torch.load(config["PRE_TRAINED_MODEL"], map_location=self.device)
             )
 
         classifier = classifier.eval()
@@ -51,10 +51,10 @@ class Model:
             dict(zip(config["CLASS_NAMES"], probabilities))
         )
 
-    model = Model()
+model = Model()
 
 
-    def get_model():
-        return model
+def get_model():
+    return model
 
 
