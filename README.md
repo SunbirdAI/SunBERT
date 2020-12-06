@@ -19,6 +19,26 @@ Begin By downloading pretrained model by running:
 ## Run Local Inference Server
 
 1. Begin Server by running ``bin/start_server``
-1. When server starts on another terminal: Send a request to the endpoint: `` http POST http://localhost:8000/predict text = "Help, I got covid19 !" ``
+1. When server starts on another terminal: Send a request to the endpoint: <br>`` http POST http://localhost:8000/predict text = "Uganda imposes strict lockdown measures" ``
 1. Alternatively; You can test the api by running ``bin/test_response``
-1. 
+
+1. Output should look like:
+
+```
+HTTP/1.1 200 OK
+content-length: 137
+content-type: application/json
+date: Sun, 06 Dec 2020 21:24:31 GMT
+server: uvicorn
+
+{
+    "classification": "Covid",
+    "confidence": 0.9988712668418884,
+    "probabilities": {
+        "Covid": 0.9988712668418884,
+        "Non-Covid": 0.0011287190718576312
+    }
+}
+
+```
+
