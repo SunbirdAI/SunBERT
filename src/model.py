@@ -1,21 +1,24 @@
-import transformers 
+import json
+import transformers
 from transformers import BertModel
 from torch import nn
+import torch.nn.functional as F
+from transformers import BertTokenizer
 
 
-class SunBERT(nn.Module):
-    def __init__(self, n_classes):
-        super(SunBERT, self).__init__()
-        self.bert = BertModel.from_pretrained(bert_cased)
-        self.drop = nn.Dropout(p=0.3)
-        self.out = nn.Linear(self.bert.config.hidden_size, n_classes)
+class Model:
+    def __init__(self):
+        self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        self.tokenizer = BertTokenizer.from_pretrained(config["BERT_MODEL"])
+        classifier = SunBert(len(config["CLASS_NAMES"]))
 
-    def forward(self, input_ids, attention_mask):
-        _, pooled_output = self.bert(
-                input_ids = input_ids,
-                attention_mask = attention_mask
-                )
+        classifier.load_state_dict(
+                torch.load(config["PRETRAINED_MODEL"], map_location=self.device)
+            )
 
-        output = self.drop(pooled_output)
+            classifier = classifier.eval()
+            self.classifier = classifier.to(self.device)
 
-        return self.out(output)
+
+
+
