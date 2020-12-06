@@ -20,5 +20,37 @@ class Model:
             self.classifier = classifier.to(self.device)
 
 
+    def predict(self, text):
+        encoded_text = self.tokenizer.encode_plus(
+
+            text,
+            max_length = config["MAX_SEQUENCE_LEN"],
+            add_special_tokens = True,
+            return_token_type_ids = False,
+            pad_to_max_length = True,
+            return_attention_mask = True,
+            return_tensors = "pt",
+        )
+
+        input_ids = encoded_text["input_ids"].to(self.device)
+        attention_mask = encoded_text["attention_mask"].to(self.device)
+
+        with torch.no_grad():
+            probabilities = F.softmax(self.classifier(input_ids, attention_mask), dim = 1)
+        confidence, predicted_class  = torch.max(probabilities, dim=1)
+        predicted_class = predicted_class.cpu().item()
+        probabilities = probabilities.flatten().cpu().numpy().tolist()
+
+        return(
+            config["CLASS_NAMES"][predicted_class],
+            confidence,
+            dict(zip(config["CLASS_NAMES"], probabilities))
+        )
+
+    model = Model()
+
+
+    def get_model():
+        return model
 
 
