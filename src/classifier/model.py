@@ -20,8 +20,8 @@ class Model:
                 torch.load(config["PRETRAINED_MODEL"], map_location=self.device)
             )
 
-            classifier = classifier.eval()
-            self.classifier = classifier.to(self.device)
+        classifier = classifier.eval()
+        self.classifier = classifier.to(self.device)
 
 
     def predict(self, text):
