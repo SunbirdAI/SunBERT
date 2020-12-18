@@ -4,27 +4,32 @@ Sunbird AI BERT style model for text classification.
 
 # Usage
 
-## Installation
+## Install requirements
+
 Run ``pip install -r requirements.txt``
 
 ## Pre-Requisites
 
 This model is built and trained using the [HuggingFace 🤗](https://huggingface.co/) framework. 
 
-Requires a trained Bert Model. Example training notebooks can be found in ``notebooks`` dir
-We provide a pretrained model for Covid/Non-Covid Tweet classification
+It requires a trained Bert Model. Example training notebooks can be found in the ``notebooks`` folder.
+We provide a pretrained model for Covid/Non-Covid Tweet classification.
 
-Begin By downloading pretrained model by running:
+Begin by downloading pretrained model:
 
-`` bin/download_model``
+* First, create a folder called ``assets`` in this project's root directory:<br>``mkdir assets``
+
+* Then download the model by running ``bin/download_model``
+
 
 ## Run Local Inference Server
 
-1. Begin Server by running ``bin/start_server``
-1. When server starts on another terminal: Send a request to the endpoint: <br>`` http POST http://localhost:8000/predict text = "Uganda imposes strict lockdown measures" ``
-1. Alternatively; You can test the api by running ``bin/test_response``
+1. Begin the server by running ``bin/start_server``
+1. When the server starts, open another terminal and send a request to the endpoint as shown here: <br>``http POST http://localhost:8000/predict text="Uganda imposes strict lockdown measures" ``
 
-1. Output should look like:
+1. Alternatively, you can test the api by running ``bin/test_request``
+
+1. The output should look like this:
 
 ```
 HTTP/1.1 200 OK
@@ -44,3 +49,5 @@ server: uvicorn
 
 ```
 
+## Troubleshooting
+If you run into errors when executing the commands ``bin/download_model``, ``bin/start_server``, or ``bin/test_request``, try setting the write permissions of the file as shown in the example below:<br>``chmod +x bin/download_model``
