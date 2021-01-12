@@ -31,13 +31,13 @@ def predict(request: Classification_Request, model: Model = Depends(get_model)):
 
 @app.post("/predict_batch")
 def predict_batch(request: Classification_Request_Batch, model: Model = Depends(get_model)):
-    predictions = []
+    predictions_list = []
     for text in request.text_list:
         classification, confidence, probabilities = model.predict(text)
     
-        predicted = Classification_Response(
+        prediction = Classification_Response(
             classification = classification, confidence = confidence, probabilities=probabilities
         )
-        predictions.append(predicted)
+        predictions_list.append({"text": text, "prediction": prediction})
 
-    return predictions
+    return predictions_list
