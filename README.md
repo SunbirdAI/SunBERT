@@ -49,5 +49,8 @@ server: uvicorn
 
 ```
 
+## API Documentation
+Check the docs here: `http://localhost:8000/docs` to see the full schema. These docs can also be used as a quick way to test `POST` requests.
+
 ## Troubleshooting
 If you run into errors when executing the commands ``bin/download_model``, ``bin/start_server``, or ``bin/test_request``, try setting the write permissions of the file as shown in the example below:<br>``chmod +x bin/download_model``
