@@ -1,3 +1,7 @@
+"""
+API endpoints for text category prediction
+"""
+
 from typing import Dict, List
 
 from fastapi import Depends, FastAPI
@@ -7,36 +11,33 @@ from .classifier.model import Model, get_model
 
 app = FastAPI()
 
-class Classification_Request(BaseModel):
+class ClassificationRequest(BaseModel):
     text: str
 
-class Classification_Response(BaseModel):
+class ClassificationResponse(BaseModel):
     probabilities: Dict[str, float]
     classification: str
     confidence: float
 
-class Classification_Request_Batch(BaseModel):
+class ClassificationRequestBatch(BaseModel):
     text_list: List[str]
 
-class Classification_Response_Batch(BaseModel):
-    predictions: List
-
-@app.post("/predict", response_model=Classification_Response)
-def predict(request: Classification_Request, model: Model = Depends(get_model)):
+@app.post("/predict", response_model=ClassificationResponse)
+def predict(request: ClassificationRequest, model: Model = Depends(get_model)):
     classification, confidence, probabilities = model.predict(request.text)
 
-    return Classification_Response(
-        classification = classification, confidence = confidence, probabilities=probabilities
+    return ClassificationResponse(
+        classification=classification, confidence=confidence, probabilities=probabilities
     )
 
 @app.post("/predict_batch")
-def predict_batch(request: Classification_Request_Batch, model: Model = Depends(get_model)):
+def predict_batch(request: ClassificationRequestBatch, model: Model = Depends(get_model)):
     predictions_list = []
     for text in request.text_list:
         classification, confidence, probabilities = model.predict(text)
-    
-        prediction = Classification_Response(
-            classification = classification, confidence = confidence, probabilities=probabilities
+
+        prediction = ClassificationResponse(
+            classification=classification, confidence=confidence, probabilities=probabilities
         )
         predictions_list.append({"text": text, "prediction": prediction})
 
