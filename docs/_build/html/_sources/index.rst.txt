@@ -10,6 +10,12 @@ Welcome to Sunbert's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+.. automodule:: src.classifier
+   :members:
+
+
+.. automodule:: src
+   :members:
 
 
 Indices and tables
