@@ -18,7 +18,7 @@ sacremoses==0.0.43
 six==1.15.0
 starlette==0.13.6
 tokenizers==0.9.3
-torch==1.7.0
+torch==1.7.0+cpu
 tqdm==4.54.1
 transformers==3.5.1
 typing-extensions==3.7.4.3
