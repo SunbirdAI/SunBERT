@@ -13,6 +13,12 @@ Welcome to Sunbert's documentation!
 .. automodule:: src.classifier
    :members:
 
+.. automodule:: src.dataset
+   :members:
+
+.. automodule:: src.engine
+   :members:
+
 
 .. automodule:: src
    :members:

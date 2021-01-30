@@ -34,7 +34,40 @@
 <h1>Welcome to Sunbert’s documentation!<a class="headerlink" href="#welcome-to-sunbert-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<span class="target" id="module-src.classifier"></span><span class="target" id="module-src"></span></div>
+<span class="target" id="module-src.classifier"></span><span class="target" id="module-src.dataset"></span><dl class="py function">
+<dt id="src.dataset.create_dataloader">
+<code class="sig-prename descclassname">src.dataset.</code><code class="sig-name descname">create_dataloader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">tokenizer</span></em>, <em class="sig-param"><span class="n">max_len</span></em>, <em class="sig-param"><span class="n">batch_size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset.create_dataloader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to create data loader</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>Dataframe</em>) – Pandas Dataframe</p></li>
+<li><p><strong>tokenizer</strong> (<em>tokenizer</em>) – Huggingface bert tokenizer</p></li>
+<li><p><strong>max_len</strong> (<em>int</em>) – Maximum Length of tokens</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – Batch size</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Data Loader used as inout to train the model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataLoader</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="src.dataset.create_dataset">
+<em class="property">class </em><code class="sig-prename descclassname">src.dataset.</code><code class="sig-name descname">create_dataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">targets</span></em>, <em class="sig-param"><span class="n">tokenizer</span></em>, <em class="sig-param"><span class="n">max_len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.dataset.create_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to create dataset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Dataset</strong> (<em>Dataset</em>) – Sunbert dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-src.engine"></span><span class="target" id="module-src"></span></div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
