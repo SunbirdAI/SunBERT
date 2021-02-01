@@ -9,6 +9,10 @@ with open("config.json") as json_file:
 
 
 class SunbertClassifier(nn.Module):
+
+    """Main Sunbert classification module
+    
+    """
     def __init__(self, n_classes):
         super(SunbertClassifier, self).__init__()
         self.bert = BertModel.from_pretrained(config["BERT_MODEL"])

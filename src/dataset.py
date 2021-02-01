@@ -8,6 +8,11 @@ from transformers import BertTokenizer
 
 
 class create_dataset(Dataset):
+    """Class to create dataset 
+
+    Args:
+        Dataset (Dataset): Sunbert dataset
+    """
     def __init__(self, text, targets, tokenizer, max_len):
         self.text = text
         self.targets = targets 
@@ -18,6 +23,14 @@ class create_dataset(Dataset):
         return len(self.text)
 
     def __getitem__(self, item):
+        """Gets a single instance of dataset
+
+        Args:
+            item (item): usually the id
+
+        Returns:
+            dict: Dictionary of: input_text, targets, input ids, and attention mask
+        """
         text = str(self.text[item])
         target = self.targets[item]
 
@@ -40,6 +53,17 @@ class create_dataset(Dataset):
 
 
 def create_dataloader(df, tokenizer, max_len, batch_size):
+    """Function to create data loader
+
+    Args:
+        df (Dataframe): Pandas Dataframe
+        tokenizer (tokenizer): Huggingface bert tokenizer
+        max_len (int): Maximum Length of tokens 
+        batch_size (int): Batch size 
+
+    Returns:
+        DataLoader: Data Loader used as inout to train the model
+    """
     ds = create_dataset(
             text = df.text.to_numpy(),
             targets = df.category.to_numpy(),

@@ -11,6 +11,9 @@ with open("config.json") as json_file:
 
 
 class Model:
+    """
+    :Base Model 
+    """
     def __init__(self):
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.tokenizer = BertTokenizer.from_pretrained(config["BERT_MODEL"])
